@@ -1,0 +1,209 @@
+P3A: Write a Solidity program that demonstrates various types of functions including regular functions, view functions, pure functions, and the fallback function.
+
+// SPDX-License-Identifier: MIT
+pragma solidity ^0.8.0;
+contract FunctionTypesDemo {
+
+    uint public counter = 0;
+
+    // 🔁 Regular function: modifies the state
+    function increment() public {
+        counter += 1;
+    }
+
+    // 👀 View function: reads state, doesn't modify
+    function getCounter() public view returns (uint) {
+        return counter;
+    }
+
+    // 🧮 Pure function: no access to state
+    function add(uint a, uint b) public pure returns (uint) {
+        return a + b;
+    }
+
+    // 💰 Receive function: triggered when contract receives Ether with no data
+    receive() external payable {
+        // You could add logic here for receiving ETH
+    }
+
+    // 🛠️ Fallback function: triggered when no other function matches
+    fallback() external payable {
+        // Fallback logic can go here
+    }
+    
+}
+
+
+P3B: Write a Solidity program that demonstrates function overloading, mathematical functions, and cryptographic functions.
+
+// SPDX-License-Identifier: MIT
+pragma solidity ^0.8.0;
+
+contract FunctionDemo {
+    // Function Overloading
+    function getResult(uint a, uint b) public pure returns (uint) {
+        return a + b;
+    }
+
+    function getResult(uint a, uint b, uint c) public pure returns (uint) {
+        return a + b + c;
+    }
+
+    // Mathematical Functions
+    function mathOps(uint a, uint b) public pure returns (
+        uint sum,
+        uint diff,
+        uint prod,
+        uint quotient,
+        uint mod,
+        uint power
+    ) {
+        require(b != 0, "Division by zero");
+        sum = a + b;
+        diff = a - b;
+        prod = a * b;
+        quotient = a / b;
+        mod = a % b;
+        power = a ** b;
+    }
+
+    // Cryptographic Functions
+    function hashKeccak256(string memory input) public pure returns (bytes32) {
+        return keccak256(abi.encodePacked(input));
+    }
+
+    function hashSha256(string memory input) public pure returns (bytes32) {
+        return sha256(abi.encodePacked(input));
+    }
+
+    function hashRipemd160(string memory input) public pure returns (bytes20) {
+        return ripemd160(abi.encodePacked(input));
+    }
+}
+
+P3C: Write a Solidity program that demonstrates various features including contracts, inheritance, constructors, abstract contracts, interfaces.
+
+// SPDX-License-Identifier: MIT
+pragma solidity ^0.8.0;
+
+/// @title Interface Definition
+interface ICalculator {
+    function add(uint a, uint b) external pure returns (uint);
+    function subtract(uint a, uint b) external pure returns (uint);
+}
+
+/// @title Abstract Contract for Shared Math Logic
+abstract contract MathBase {
+    // Abstract function (must be implemented)
+    function multiply(uint a, uint b) public pure virtual returns (uint);
+
+    // Concrete function (optional override)
+    function divide(uint a, uint b) public pure returns (uint) {
+        require(b != 0, "Cannot divide by zero");
+        return a / b;
+    }
+}
+
+/// @title Main Calculator Contract
+/// @notice Implements interface and inherits from abstract base
+contract Calculator is ICalculator, MathBase {
+    address public owner;
+
+    // Constructor
+    constructor() {
+        owner = msg.sender;
+    }
+
+    // Interface Implementations
+    function add(uint a, uint b) external pure override returns (uint) {
+        return a + b;
+    }
+
+    function subtract(uint a, uint b) external pure override returns (uint) {
+        return a - b;
+    }
+
+    // Implementing abstract method
+    function multiply(uint a, uint b) public pure override returns (uint) {
+        return a * b;
+    }
+
+    // Inherited divide() method from MathBase is also available
+}
+
+/// @title Advanced Calculator Inheriting Calculator
+contract AdvancedCalculator is Calculator {
+    function power(uint base, uint exponent) public pure returns (uint result) {
+        result = 1;
+        for (uint i = 0; i < exponent; i++) {
+            result *= base;
+        }
+    }
+}
+
+P3D: Write a Solidity program that demonstrates use of libraries, assembly events, and error handling.
+
+// SPDX-License-Identifier: MIT
+pragma solidity ^0.8.0;
+
+/// @title MathLib - A library with reusable math functions
+library MathLib {
+    function square(uint x) internal pure returns (uint) {
+        return x * x;
+    }
+
+    function cube(uint x) internal pure returns (uint) {
+        return x * x * x;
+    }
+}
+
+/// @title Contract demonstrating library, assembly, events, and error handling
+contract FeaturesDemo {
+    using MathLib for uint;
+
+    address public owner;
+
+    // Event to log computations
+    event Computed(address indexed user, string operation, uint input, uint result);
+
+    // Custom error for unauthorized access
+    error NotOwner(address caller);
+
+    constructor() {
+        owner = msg.sender;
+    }
+
+    /// @notice Uses MathLib and emits event
+    function calculateSquare(uint value) external returns (uint) {
+        uint result = value.square();
+        emit Computed(msg.sender, "square", value, result);
+        return result;
+    }
+
+    /// @notice Uses inline assembly to double a value
+    function doubleValue(uint x) public pure returns (uint result) {
+        assembly {
+            result := mul(x, 2)
+        }
+    }
+
+    /// @notice Restricted to owner, demonstrates custom error
+    function privilegedAction() external view {
+        if (msg.sender != owner) {
+            revert NotOwner(msg.sender);
+        }
+        // privileged logic here
+    }
+
+    /// @notice Demonstrates require, assert, and emit
+    function safeDivide(uint a, uint b) external returns (uint result) {
+        require(b != 0, "Division by zero");
+
+        result = a / b;
+
+        // assert is generally used for internal consistency checks
+        assert(result * b <= a); // This should always hold true
+
+        emit Computed(msg.sender, "divide", a, result);
+    }
+}
