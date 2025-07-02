@@ -1,0 +1,584 @@
+Practical 1 (A)	Recovering Data Using EaseUS Data Recovery Wizard		
+Practical 1 (B)	 Performing Hash, Checksum, or HMAC Calculationsusing the HashCalc.		
+Practical 1 (C)	Creating a Disk Image File of a Hard Disk Partitionusing the R-drive Image Tool.		
+Practical 2 (A)	Analyzing File System Types Using the Sleuth Kit(TSK).		
+Practical 2 (B)	Analyzing Raw image using Autopsy.		
+Practical 3 (A)	Creating a dd image file		
+Practical 3 (B)	Investigating NTFS Drive Using DiskExplorer for NTFS.		
+Practical 3 (C)	Viewing Content of Forensic Image Using Access Data FTK Imager Tool		
+Practical 4 (A)	Cracking Application Password		
+Practical 4 (B)	Detecting Steganography		
+Practical 5 (A)	Performa a Practical collect volatile information from a host computer running on a Windows OS by using tools PsTools, LogonSessions, and NetworkOpenedFiles.		
+Practical 5 (B)	Performa a Practical for Discovering and Extracting Hidden Forensic Material on Computers Using OSForensics		
+Practical 6 (A)	Investigating Network Traffic Using Wireshark		
+Practical 7 (A)	Analyzing Domain and IP Address Queries Using SmartWhois Tool		
+Practical 9 (A)	Perform Static Analysis of the Suspicious File		
+Practical 9 (B)	Performing dynamic analysis of a malicious file to find the processes It starts, network operations, file changes and other activities.		
+Practical 10 (A)	Recovering Deleted Emails Using the Recover My Email utility.		
+Practical 11 (A)	Analyzing the Forensic Image and Carving the Deleted Files Using Autopsy		
+
+
+Prac 1A)  Recovering Data Using EaseUS Data Recovery Wizard
+
+1. Preparation Phase 
+1.1 
+Download EaseUS :- Visit https://www.easeus.com and download the EaseUS Data Recovery Wizard Free/Trial version. 
+1.2  
+Install the Software:- Follow installation steps. Do not install on the same drive from where you want to recover data. 
+1.3 
+Create a Test 
+Scenario (Optional) :- Format a USB drive or delete some files manually to simulate accidental data loss.
+2.1 
+Launch EaseUS :- Open the application as Administrator. 
+2.2 
+Select the Location to Scan :- Choose the drive or partition from which the data was deleted/lost (e.g., USB Drive D:). 
+2.3 
+Quick Scan Starts Automatically :- EaseUS first performs a quick scan to find recently deleted 
+files. 
+2.4 
+Deep Scan (Automatic) :-Automatically begins if quick scan does not find all files. This will take more time but is more thorough. 
+2.5 
+Preview Files :- After scanning, EaseUS shows files in folders like Deleted Files, Lost Files, RAW, etc. You can preview documents, images, videos. 
+Select the Location to Scan 
+Quick Scan Starts Automatically
+Preview Files
+
+Prac 1B)  Performing Hash, Checksum, or HMAC Calculationsusing the HashCalc.
+
+1. Preparation Phase 
+1.1 Download 
+HashCalc 
+Download from a trusted source like 
+https://www.slavasoft.com/hashcalc/. 
+1.2 Install the Software 
+Follow the on-screen installation instructions. It’s a lightweight tool. 
+1.3 Prepare Files for Hashing 
+Choose a sample file (e.g., document.txt, image.jpg, etc.) for which you’ll compute the hash.
+
+2.  Performing Hash Calculation 
+2.1 Launch HashCalc 
+Open the application from the Start Menu. 
+2.2 Select Data Type 
+Choose File (you can also select Text, Hex String, etc.). 
+2.3 Browse for the File 
+Click on ... button and locate your file for hash calculation. 
+2.4 Select Hash Algorithms 
+Tick the checkboxes for algorithms you want (e.g., MD5, 
+SHA-1, SHA-256, CRC32, etc.). 
+2.5 Click Calculate 
+Press the Calculate button. The hashes will be generated in a 
+few seconds. 
+
+3. Validation & Reporting 
+4.1 File Integrity Check 
+Later, re-run HashCalc on the same file. If the hash matches, file integrity is confirmed. 
+4.2 Tampering Simulation (Optional) 
+Modify the file and recalculate the hash — the new 
+hash will differ, proving tampering. 
+4.3 Document Results 
+Record algorithm used, hash values, file names, date, 
+and screenshot results. 
+
+Launch HashCalc
+Select Data Type & Browse for the File
+Select Hash Algorithms
+Click Calculate
+
+Prac 1C)  Creating a Disk Image File of a Hard Disk Partitionusing the R-drive Image Tool.
+
+1. Preparation Phase
+1.1 Download R-Drive Image Tool 
+Visit: https://www.drive-image.com/ and install the trial version (supports full imaging). 
+1.2 Choose Source Disk or Partition 
+Select the internal or external hard disk/partition you want to image. 
+1.3 Prepare Destination Storage 
+Have another drive (e.g., D:, E:, external HDD) ready with sufficient space to store the image file. 
+1.4 Name the Case 
+Create a folder with a case name and date to store the disk image and logs (e.g., Case_001_May25).
+
+2. Creating the Disk Image
+2.1 Launch R-Drive Image 
+Run as Administrator. Choose "Create an Image" from the main menu. 
+2.2 Select the Source 
+Choose the disk or partition (e.g., Disk 1 → Partition C:) that needs to be imaged. 
+2.3 Choose Destination Path 
+Select location (e.g., D:\Case_001_May25) and name the image file (e.g., disk1_partitionC.rdr). 
+2.4 Image Compression 
+Select "Normal" or "None" to ensure readability. High compression may affect recovery. 
+2.5 Split Image (Optional) 
+Choose to split image into parts (e.g., 4 GB each) if using FAT32 destination drive. 
+2.6 Create Image 
+Confirm and click "Proceed". Imaging will begin. Time depends on the size of the partition. 
+2.7 Completion 
+Wait for the process to complete. Save the logs and confirm that the image file is created successfully.
+
+Launch R-Drive Image
+Select the Source 
+Choose Destination Path
+Image Compression
+Create Image
+Completion
+
+
+Prac 2A)  Analyzing File System Types Using the Sleuth Kit  (TSK)
+
+1. Install The Sleuth Kit 
+2. Get a Sample Disk Image 
+3. Use TSK to Analyze File System Types
+Step 1: Confirm File Exists 
+Step 2. Now, take the Start value of the partition (e.g., 63 or 2048) and use it in fsstat.
+Step 3 List files and directories: 
+Step 4 View a file’s metadata: 
+
+Prac 2B)  Analyzing Raw image using Autopsy.
+
+Step 1: Launch Autopsy 
+• Open Autopsy from Start Menu or Desktop 
+• Click "Create New Case"
+Step 2: Create a New Case 
+• Case Name: e.g., PreciousImageAnalysis 
+• Base Directory: Choose a folder to save the case files 
+• Click Next → Finish
+Step 3: Add a Data Source (Disk Image) 
+• In the Autopsy workspace, click "Add Data Source" 
+• Choose "Disk Image or VM File" 
+• Click Next 
+Step 4: Locate the Raw Image File 
+• Click Browse 
+• Select your raw image file (precious.img or .dd) 
+• Click Next
+If it asks for image type, choose: 
+• Raw Single (dd, img, etc.) 
+Step 5: Configure Ingest Modules 
+Step 6: Wait for Ingestion to Complete 
+Autopsy will now process the image: 
+• Parsing file system 
+• Detecting deleted files 
+• Extracting browser history, registry entries, etc. 
+Step 7: Explore the Results
+Once analysis is complete, explore the left panel: 
+Step 8: Export or Save Evidence 
+• Right-click any file → "Extract File(s)" to export 
+• Use Generate Report feature (HTML, Excel, PDF) 
+Go to: 
+Case → Generate Report → Choose Format (HTML is good for practical)
+
+
+Prac3A)   Creating a dd image file 
+
+1. Download and Install FTK Imager 
+• Go to: https://accessdata.com/product-download/ftk-imager 
+• Click “Download Now” 
+• Extract and install the software (no license needed) 
+2. Prepare the Device for Imaging 
+Insert the USB drive, HDD, or SD card you want to image 
+FTK Imager will detect it as a physical device 
+3. Launch FTK Imager and Select Sourced install the software (no license needed)
+•  Open FTK Imager 
+•  Click: 
+File > Create Disk Image 
+•  In the pop-up: 
+• Choose: 
+Physical Drive (entire USB or HDD) or Logical Drive (just a partition) 
+• Click Next 
+•  Select the correct drive (e.g., /PhysicalDrive1 for a USB) 
+4. Set the Image Destination 
+•  Click Add to configure image settings. 
+•  Select image type: 
+• Choose Raw (dd) → click Next
+•  Fill in metadata (optional): 
+• Case Number, Examiner, Description, etc.
+•  Click Next to choose where to save: 
+• Browse to a folder (e.g., D:\ForensicImages\) 
+• Set the image filename (e.g., usb_image) 
+• Set segment size (default is OK) 
+• Click Finish
+
+Prac 3B)   Investigating NTFS Drive Using DiskExplorer for NTFS.
+
+1. Install and Open DiskExplorer for NTFS 
+• Download: https://www.runtime.org/diskexplorer-for-ntfs.htm 
+• Install and launch the application. 
+• On startup, you'll be prompted to select a drive or image file.
+
+2. Select Source 
+You have 2 options: 
+Option A: Open a Physical NTFS Disk 
+• Click "Object" > "Logical Drive" 
+• Select the NTFS partition (e.g., C:, D:) 
+Option B: Open a Disk Image (.dd) 
+• Click "Object" > "Image File" 
+• Load your .dd image file (ensure it contains an NTFS partition)
+
+3. Explore Key NTFS Structures 
+    ➢ Boot Sector 
+    ➢ Navigate to Sector 0 
+    ➢ Displays partition info: bytes per sector, sectors per cluster, MFT location 
+❖ MFT (Master File Table) 
+      ➢ Go to MFT offset shown in the boot sector (e.g., Sector 786432) 
+      ➢ Use Search > Goto Sector to jump 
+      ➢ View MFT records of files and directories 
+      ➢ Each MFT record is 1024 bytes and contains metadata like: 
+      ➢ File name 
+      ➢ Creation/modification dates 
+      ➢ Attribute list (data, timestamps, permissions) 
+❖ Directories and Files 
+      ➢ Use "Tools > Find File" to search for specific files 
+      ➢ Click any entry to inspect its MFT record 
+❖ Deleted Files 
+      ➢ Deleted files often show up with a "?" before the name 
+      ➢ You can copy and recover them: 
+      ➢ Right-click the file > Save As to export it 
+❖ Hex View of Any Sector 
+      ➢ Navigate to any sector to analyze raw hex 
+      ➢ Helpful for carving unallocated data or seeing file headers
+
+4. Analyze File Content 
+• Use the built-in hex editor to inspect file headers (e.g., for JPG, PDF, 
+DOCX) 
+• Correlate MFT records with actual data sectors 
+
+5. Report Your Findings 
+Include: 
+• Drive/Image info (name, size, filesystem) 
+• Files found (with MFT record IDs) 
+• Deleted files recovered (names, timestamps) 
+• Any hidden/system files discovered
+
+Prac 3C)   Viewing Content of Forensic Image Using Access Data FTK Imager Tool 
+
+To open and explore the contents of a forensic image (raw image or E01 format) to: 
+• View directory and file structure 
+• Recover deleted files 
+• Export selected files 
+• Validate integrity with hashes
+
+1. Open FTK Imager 
+• Launch FTK Imager 
+• Go to File > Add Evidence Item
+
+2. Select Evidence Type 
+In the popup window: 
+• Choose “Image File” 
+• Click Next
+
+3. Mount and View Image
+
+4. Explore File Structure
+
+5. View Hex, Text, and Preview Modes 
+
+6. Recover/Export Files 
+
+7. Check File Hashes (MD5/SHA1) 
+
+Prac 4A)   Cracking Application Password
+
+Step 1: Create a Sample Encrypted File 
+• Create a ZIP file and password-protect it: 
+• zip -e secret.zip secret.txt 
+
+Step 2: Convert the ZIP File to John-Compatible Format 
+• Use zip2john to extract the hash: 
+• zip2john secret.zip > zip.hash
+ 
+Step 3: Run John the Ripper 
+Crack the password using:  john zip.hash
+• John will start brute-forcing the password using a wordlist (e.g., 
+rockyou.txt) 
+• Once done, you can view the cracked password: 
+john --show zip.hash  
+
+Open Command Prompt and go to the run folder: 
+• cd C:\john-1.9.0-jumbo-1-win64\run 
+• Run John on the hash file: 
+• john hashes.txt 
+• To see the cracked passwords: 
+• john --show hashes.txt
+
+Prac 4B) Detecting Steganography 
+
+Step 1: Launch ProDiscover Basic 
+• Open ProDiscover Basic 
+• Click on File → New Project 
+• Fill in details like Project Name and Investigator Name 
+• (e.g., Project: StegoDetection, Investigator: XYZ)
+
+Step 2: Add Evidence File 
+You have two options: 
+• Disk image (e.g., .dd, .img) 
+• Physical drive (be careful — forensic only!) 
+• Go to: 
+• File > Add Evidence > Add Image File 
+• Select your suspect .img or .dd file.
+• If you're just testing a suspect file (e.g., .jpg or .wav):
+• Put the file into a folder and make a disk image using a tool like FTK 
+Imager or OSFMount. 
+• Then mount that image in ProDiscover.
+
+Step 3: Analyze the File System 
+• Click the "Content View" or "File View" tab 
+• Browse through folders to locate suspicious media files (e.g., .jpg, .png, .wav)
+
+Step 4: File Signature and Metadata Check 
+• Right-click on any suspicious file 
+• Select "View File Content" 
+• In the hex view, look for anomalies like: 
+• Embedded file headers (PK for ZIP, JFIF, MZ, etc.) 
+• Text hidden at the end of image files 
+• Multiple EOF markers 
+• Long strings of null bytes followed by unusual data 
+
+Step 5: Keyword Search 
+Go to Search > Search Keywords 
+• Add common stego-indicators like: 
+• hidden 
+• password 
+• secret 
+• PK (ZIP header) 
+• MZ (EXE header) 
+• Analyze hit results for embedded content
+
+Step 6: Carve Files 
+• Use "Carve Unallocated Space" feature: 
+• Go to: Tools > Carve Data 
+• Select image file → choose target folder → ProDiscover will extract 
+potential hidden files 
+Step 7: Export Suspicious Files 
+• Right-click on suspicious file 
+• Choose "Export" 
+• Save it for further analysis using tools like: 
+ • StegExpose, StegSolve, zsteg (Linux), binwalk and strings
+
+Prac 5A)  Performa a Practical collect volatile information from a host computer running on a Windows OS by using tools PsTools, LogonSessions, and NetworkOpenedFiles. 
+
+1. Download PS Tools 
+•  Visit: Sysinternals PsTools 
+•  Click Download PsTools 
+•  Extract the ZIP file to: C:\Tools\PsTools
+2. OPEN CMD AS ADMIN 
+• Press Win + R, type cmd, then press Ctrl + Shift + Enter (to run as 
+Administrator) 
+• Navigate to the PsTools folder: 
+Cmd → cd C:\Tools\PsTools
+3. EXECUTE PsTools COMMANDS TO COLLECT VOLATILE INFO 
+• Running Processes 
+4. Logged-in Users
+5. Active Sessions 
+6. Uptime and System Info
+7. Save All Output to Text File
+
+Prac 5B)   Performa a Practical for Discovering and Extracting Hidden Forensic Material on Computers Using OSForensics
+
+1. Download & Install OSForensics 
+• Go to: https://www.osforensics.com/download.html 
+• Download and install the Free Edition (or Portable). 
+• Launch it as Administrator for full access. 
+2. Create a Case 
+•  Click Case Manager → Create New Case 
+•  Enter: 
+• Case Name: HiddenDataInvestigation 
+• Investigator: Your Name 
+• Save Location: D:\ForensicsCases\HiddenData 
+•  Click OK to create and load the case.
+3. Select Drive or Disk Image 
+You can work on: 
+• A live physical disk (e.g. C:\) 
+• A disk image file (.dd, .E01, .img) 
+To analyze an image file: 
+• Go to Drive Imaging & Mounting → Mount the image as a virtual drive.
+4. Run Artifact & Hidden Data Scans 
+A. Deleted File Recovery 
+• Open Deleted File Search 
+• Select the drive or image. 
+• Click Start Search. 
+• Recovered files will appear with status (partially/fully recoverable)
+B. File System Browser 
+• Go to File Name Search → Browse hidden folders like: 
+o C:\$Recycle.Bin 
+o C:\System Volume Information 
+o Look for alternate data streams (ADS) and strange extensions.
+C. Steganography Detection 
+• Go to File Signature Search: 
+o This checks for mismatched file headers (e.g., .jpg that’s actually an .exe) 
+o It uncovers hidden payloads or renamed malware. 
+D. Index & Keyword Search 
+• Click Index Search → Create index of the disk. 
+• Enter keywords like: 
+o password 
+o .zip 
+o .docx 
+o crypto 
+o hidden 
+• Review results and export them. 
+5. Extract and Save Forensic Artifacts 
+•  Right-click any file or folder of interest → Extract to... 
+•  Save it to your case folder 
+
+Prac 6A)  Investigating Network Traffic Using Wireshark
+
+1. Install and Launch Wireshark 
+• Download from: https://www.wireshark.org/download.html 
+• Run as Administrator (on Windows) to allow interface access. 
+• Wireshark will list all network interfaces (Wi-Fi, Ethernet, etc.). 
+2. Capture Live Traffic 
+To capture: 
+1. Select the active interface (e.g., Wi-Fi or Ethernet) 
+2. Click Start Capturing (shark fin icon)
+3. Analyze Captured Traffic
+4. Inspect Packets 
+Click on any packet: 
+• Expand Frame → Ethernet → IP → TCP/UDP → Application Layer 
+• Read HTTP request, DNS query, or credentials in clear text 
+• Use Follow TCP Stream to reconstruct conversations
+
+Prac 7A)  Analyzing Domain and IP Address Queries Using SmartWhois Tool
+
+1. Install SmartWhois Tool 
+•  Download from https://www.tamos.com/products/smartwhois/ 
+•  Install and launch the application. 
+2. Perform WHOIS Lookup 
+•  In the SmartWhois interface: 
+• Go to the "Query" tab. 
+• Enter a suspicious IP address or domain name (e.g., 45.83.122.91 or phishing-login.com). 
+•  Click "Query" or press Enter.
+3. Analyze WHOIS Report
+4. Export Report (Evidence) 
+•  Go to File → Save As... 
+•  Export results as .txt or .html format. 
+Result.txt
+
+Prac 9A)  Perform Static Analysis of the Suspicious File
+
+1. Launch PEStudio 
+•  Open PEStudio.exe (no installation needed). 
+•  Drag and drop your suspicious .exe file into the PEStudio window. 
+2. Initial Summary  
+You’ll first see a summary dashboard: 
+• File Type: PE32 or PE64, EXE or DLL 
+• Digital Signature: Signed/Unsigned 
+• Compiler Info: Tool used to compile 
+• Timestamp: File creation/modification time 
+• Entropy: High entropy may indicate packing or encryption 
+3. Analyze Key Sections 
+1. Indicators 
+• PEStudio provides heuristics and blacklist flags 
+• Look for: 
+Suspicious APIs (e.g., VirtualAlloc, 
+WriteProcessMemory) 
+Suspicious strings (cmd.exe, powershell, IP addresses, etc.) 
+Known malware characteristics 
+2. Imports 
+• APIs the program uses 
+• Dangerous APIs (often red-flagged) include: 
+o CreateRemoteThread 
+o GetProcAddress 
+o LoadLibrary 
+o WinExec 
+3. Strings 
+• View all ASCII/Unicode strings embedded in the file 
+• Look for: 
+o URLs 
+o IP addresses 
+o File paths 
+o Registry keys 
+o Command-line arguments
+4. Sections 
+• Normal sections: .text, .data, .rsrc, .reloc 
+• Watch for: 
+o Non-standard section names 
+o Sections with unusually high entropy 
+o Executable sections with write permissions 
+5. Resources 
+• Embedded resources like images, icons, or hidden files 
+• Malware may store payloads here 
+6. Manifest / Version Info 
+• Can reveal: 
+o Original program name 
+o Intended OS compatibility 
+o Publisher info (real or fake)
+
+Prac 9B)   Performing dynamic analysis of a malicious file to find the processes It starts, network operations, file changes and other activities. 
+
+• New processes 
+• Modified or created files 
+• Registry changes 
+• Network activity (IP/DNS, ports) 
+• Any suspicious behavior 
+1. Install and Launch Wireshark 
+• Download from: https://www.wireshark.org/download.html 
+• Run as Administrator (on Windows) to allow interface access. 
+• Wireshark will list all network interfaces (Wi-Fi, Ethernet, etc.).
+2. Capture Live Traffic 
+To capture: 
+• Select the active interface (e.g., Wi-Fi or Ethernet) 
+• Click Start Capturing (shark fin icon) 
+5. Analyze Captured Traffic
+6. Inspect Packets 
+Click on any packet: 
+• Expand Frame → Ethernet → IP → TCP/UDP → Application Layer 
+• Read HTTP request, DNS query, or credentials in clear text 
+• Use Follow TCP Stream to reconstruct conversations
+7. Analyze After Suspicious Activity
+8. Key Signs of Suspicious Traffic
+
+Prac 10A)   Recovering Deleted Emails Using the Recover My Email utility.
+
+1. Install the Tool 
+•  Download from official site: https://www.recovermyemail.com 
+•  Install and run the application on your forensic workstation or virtual lab. 
+2. Obtain or Create a PST/DBX File 
+•  Use any existing Outlook PST file from a test system. 
+•  OR export from a virtual machine running Outlook: 
+• Outlook → File → Export → Export to .pst 
+3. Launch Recover My Email
+4. Select the Email File
+5. Begin with Scan
+6. Preview Recovered Email  
+7. Recover Emails 
+
+Prac 11A)  Analyzing the Forensic Image and Carving the Deleted Files Using Autopsy
+
+1. Install and Launch Autopsy 
+•  Download and install Autopsy. 
+•  Launch the application. 
+•  Click "Create New Case", provide a name and location.
+2. Add Data Source 
+3. Autopsy Will Analyze Automatically 
+Autopsy will: 
+• Scan for file system(s) 
+• Index call logs, SMS, contacts (if present) 
+• Reconstruct directory structure
+ • Identify deleted files 
+• Perform keyword & file type searches
+4. Navigate the Analysis Results 
+Use the left panel to explore: 
+File Metadata 
+Deleted Files 
+Images/Videos/Audio 
+Call Logs & SMS (if parsed) 
+Keyword Hits
+5. Carve Deleted Files 
+•  Go to "File Types" → "Unallocated Space". 
+•  Autopsy may show "Carved Files": 
+• These are deleted items reconstructed from binary fragments. 
+•  View file previews and export those of interest: 
+• Right-click → Extract File(s) 
+6. Generate Report 
+•  Click "Generate Report"
+ Choose HTML, Excel, or PDF 
+•  Customize the report with: 
+• Case details 
+• Evidence summary 
+• Extracted data (files, logs, keywords) 
+
+
+
+
+
+
+
+
+
+
+
